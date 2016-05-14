@@ -1,0 +1,33 @@
+
+
+
+<div class = "container"> 
+    <div  class = "jumbotron"> 
+        <div ng-hide = "vote.success" class = "row"> 
+            <div class = "col-md-8 col-md-offset-2 col-xs-12">
+            <h1>{{vote.poll.question}}</h1>
+                <div class = "ballot"> 
+                <div ng-repeat = "option in vote.poll.options" class="radio">
+                  <label>
+                    <input ng-model = "vote.choice" type="radio" name="optionsRadios" id="optionsRadios1" value="{{option}}">
+                    <strong>{{option}}</strong>
+                  </label>
+                </div>
+                </div>
+                <a ng-click = "vote.save()" class = "btn btn-primary pull-right">Send it in!</a>
+            <div ng-show = "vote.showCustomOptionAvailable()" class="form-group">
+                <label class = "title-text" for="exampleInputEmail1">Add Options</label>
+                <input type="text" class="form-control" ng-model="vote.newCustomOption" placeholder="A Custom Option">
+                <a class = "btn btn-primary" ng-click = "vote.addCustomOption()">Add It!</a>
+             </div>
+             
+            </div>
+        </div>
+        <div ng-show = "vote.success">
+            <h3>{{vote.poll.authorName}} thanks you for voting along with {{vote.poll.votes.length}} other people!</h3>
+        </div>
+    </div>
+    <p><a class = "btn btn-primary btn-lg" href = "/#/recent">Recent Polls</a></p>
+    <p ng-show = "vote.success"><a class = "btn btn-primary btn-lg" href = "/#/results/{{vote.poll._id}}">Results</a></p>
+    
+</div>

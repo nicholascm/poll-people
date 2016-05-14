@@ -1,0 +1,36 @@
+<div class = "container"> 
+<div class = "row"> 
+<div class = "col-md-8 col-md-offset-2">
+    <form>
+      <div class="form-group"> 
+        <label class = "title-text">Question</label>
+        <input type="text" class="form-control" ng-model="edit.question" placeholder="Your question">
+      </div>
+      
+      <div class="form-group">
+        <label class = "title-text" for="exampleInputEmail1">Add Options</label>
+        <input type="text" class="form-control" ng-model="edit.newOption" placeholder="An Option">
+      </div>
+    </form>  
+
+      <a class = "btn btn-primary" ng-click = "edit.addOption()">Add It!</a>
+      <br>
+      <br>
+      <ul class = "list-group"> 
+          <li ng-repeat = "option in edit.options" class = "list-group-item"> 
+              {{option}}
+             <div class = "pull-right">
+                <i class="fa fa-trash-o delete" ng-click = "edit.removeOption(option)"></i>
+             </div>
+          </li>
+      </ul>
+      <input type = "checkbox"  ng-model = "edit.allowCustom">Allow Custom Options for Authenticated Users</input>
+      <div class = "pull-right"> 
+          <a ng-click = "edit.savePoll()" class = "btn btn-primary">Save My Poll</a>
+          <a ng-click = "edit.deletePoll()" class = "btn btn-primary">Delete My Poll</a>
+
+      </div>
+  
+</div>
+</div>
+</div>

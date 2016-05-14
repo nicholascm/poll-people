@@ -1,0 +1,22 @@
+
+<div class = "container"> 
+    <a class = "btn btn-primary btn-lg pull-right">Sign Up</a>
+    <br>
+    <br>
+    <ul class = "list-group  animated bounceInUp"> 
+        <li ng-repeat = "poll in recent.polls" class = "list-group-item">
+            <div class = "row"> 
+                <div class = "col-md-3"> 
+                    <p>By {{poll.userName}}</p>
+                </div>
+                <div class = "col-md-6"> 
+                    <p>{{poll.question}}</p>
+                    <p>{{poll.votes.length}} votes</p>
+                </div>
+                <div class = "col-md-3"> 
+                    <a class = "btn btn-default" href = "/#/vote/{{poll._id}}">Vote</a>
+                </div>
+            </div>
+        </li>        
+    </ul>
+</div>

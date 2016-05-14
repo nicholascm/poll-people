@@ -1,0 +1,14 @@
+<div class = "container">
+    <div class = "jumbotron">
+        <h3>Poll ID: {{result.id}}</h3>
+        
+        <twitter-share>Yes</twitter-share>
+        <!--<a twitter data-text="Your text" data-url="https://www.google.com">b</a> -->
+        
+        <h1>Question: {{result.question}}</h1>
+        <bars class = "hidden-sm hidden-xs">graph</bars>
+         <div class = "hidden-lg hidden-md hidden-xl" ng-repeat="selection in result.results">
+            <h3>{{selection.option}}: {{selection.count}} votes</h3>
+        </div>       
+    </div>
+</div>
