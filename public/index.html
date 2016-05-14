@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html ng-app ="pollApp">
+
+   <head>
+      <title>upollster</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+      <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet" type="text/css">
+      
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css
+" rel="stylesheet" type="text/css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css"> 
+      <link href="/public/css/main.css" rel="stylesheet" type="text/css">  
+   </head>
+
+   <body>
+      <nav class = "navbar navbar-default">
+         <div class = "container"> 
+            <div class = "navbar-header"> 
+               <a class = "navbar-brand" href = "/#/home"><i class="fa fa-arrow-up"></i>ollster</a>
+            </div>
+            <a class="navbar-brand pull-right" href = "/#/manage">Manage</a>
+            <a class = "navbar-brand pull-right" href = "/#/login">Login</a>
+         </div>
+      
+      </nav>
+      
+      <div ng-view> </div>
+      <script type ="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+      <script type = "text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js" charset="utf-8"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-resource.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-route.js"></script>
+      <script type="text/javascript" src="/controllers/app.js"></script>   
+
+      <script type ="text/javascript" src = "/services/pollService.js"></script>
+      <script type ="text/javascript" src = "/services/AggregatorService.js"></script>
+      <script type ="text/javascript" src = "/services/AuthService.js"></script>
+      <script type="text/javascript" src="/controllers/pollController.client.js"></script> 
+      <script type="text/javascript" src="/directives/navDirective.client.js"></script>
+      <script type="text/javascript" src="/directives/barChartDirective.client.js"></script>
+      <script type ="text/javascript" src = "/directives/twitterShareDirective.js"></script>
+
+
+   </body>
+
+</html>
