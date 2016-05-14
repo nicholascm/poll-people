@@ -1,3 +1,6 @@
+This app started with the basic clementine.js template as provided by Blake Johnston. 
+
+
 Clementine.js
 Copyright (c) 2015 Blake Johnston. All rights reserved.
 
