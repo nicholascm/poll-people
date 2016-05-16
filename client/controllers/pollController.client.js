@@ -271,6 +271,25 @@ pollApp.controller('UserCtrl', ['$http', 'AuthService', '$location', function($h
 }]); 
 
 
+pollApp.controller('LogOutCtrl', ['AuthService', '$location', function(AuthService, $location) {
+    
+    var self = this; 
+    
+    self.success = function() {
+        $location.path('/home')
+    }
+    self.failure = function() {
+        console.log("failure to log out"); 
+    }
+
+    self.logout = function() {
+        AuthService.logout(self.success, self.failure); 
+    }
+
+
+}]);
+
+
 pollApp.controller('EditPollCtrl', ['PollFactory', '$routeParams', '$location',  function(PollFactory, $routeParams, $location) {
     
     var self = this; 

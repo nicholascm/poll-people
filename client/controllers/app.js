@@ -24,6 +24,12 @@ var pollApp = angular.module('pollApp', ['ngRoute']);
                     access: {restricted: false}
 
                 }).
+                when('/logout', {
+                    templateUrl:'../views/logout.html', 
+                    controller: 'LogOutCtrl',
+                    controllerAs: 'logout', 
+                    access: {restricted: true}
+                }).
                 when('/recent', {
                     templateUrl: '../views/recent.html',
                     controller: 'RecentCtrl',

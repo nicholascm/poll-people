@@ -6,9 +6,6 @@ pollApp.directive('navigation', ['AuthService', function(AuthService) {
         templateUrl: '../views/nav.html', 
         link: function(scope, elem, attr) {
             
-            scope.logOutTheLoggedInUser = function() {
-                AuthService.logout(success, failure); 
-            }
             
             var getUserName = function() {
                 
@@ -32,19 +29,12 @@ pollApp.directive('navigation', ['AuthService', function(AuthService) {
                                 linkOptionText: "Profile",
                             }, 
                             { 
-                                linkOption: "/#/login", 
+                                linkOption: "/#/logout", 
                                 linkOptionText: "Log Out",
                             }
                         ];
                 }
             }; 
-            var success = function() {
-                console.log('success'); 
-            }
-            var failure = function() {
-                console.log('failure'); 
-            }
-            
 
             
             getUserName(); 
