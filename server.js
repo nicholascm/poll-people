@@ -2,7 +2,6 @@
 
 var express = require('express');
 var mongo = require('mongodb');
-//var routes = require('./client/routes/index.js');
 var routes = require('./server/routes/index.js'); 
 var bodyParser = require('body-parser'); 
 var mongoose = require('mongoose'); 
