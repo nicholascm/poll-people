@@ -1,7 +1,6 @@
 <navigation></navigation>
 <div class = "container"> 
     <div ng-show ="user.newUser"> 
-        <h3>Register</h3>
         <form>
           <div class="form-group">
             <label class = "title-text" for="exampleInputEmail1">Username</label>
@@ -15,7 +14,6 @@
         <p>{{user.responseMessage}}</p>
         <a class = "btn btn-lg btn-primary" ng-click = "user.register()">Register</a>
           <a class = "btn btn-lg btn-primary" ng-click = "user.login()">Login</a>
-          <a class = "btn btn-lg btn-primary" ng-click = "user.logout()">Logout</a>
 
         </div>
 

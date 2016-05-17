@@ -1,6 +1,5 @@
 'use strict';
 
-var ClickHandler = require(process.cwd() + '/server/clickHandler.server.js');
 
 var PollHandler = require(process.cwd() + '/server/pollHandler.js'); 
 

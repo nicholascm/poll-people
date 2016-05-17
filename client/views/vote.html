@@ -7,7 +7,7 @@
             <div class = "col-md-8 col-md-offset-2 col-xs-12">
             <h1>{{vote.poll.question}}</h1>
                 <div class = "ballot"> 
-                <div ng-repeat = "option in vote.poll.options" class="radio">
+                <div ng-repeat = "option in vote.options" class="radio">
                   <label>
                     <input ng-model = "vote.choice" type="radio" name="optionsRadios" id="optionsRadios1" value="{{option}}">
                     <strong>{{option}}</strong>
@@ -24,7 +24,7 @@
             </div>
         </div>
         <div ng-show = "vote.success">
-            <h3>{{vote.poll.authorName}} thanks you for voting along with {{vote.poll.votes.length}} other people!</h3>
+            <h3>Thanks for voting along with {{vote.poll.votes.length}} other people!</h3>
         </div>
     </div>
     <p><a class = "btn btn-primary btn-lg" href = "/#/recent">Recent Polls</a></p>

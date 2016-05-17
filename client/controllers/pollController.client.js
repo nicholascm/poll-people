@@ -47,19 +47,14 @@ pollApp.controller('VoteCtrl', ['$routeParams', 'PollFactory', 'AuthService',  f
     
     self.newCustomOption; //used to hold the new custom option if one is allowed
     
+    self.allowCustom; 
     
+    self.originalOptions; 
     
-    //TODO: loop this into the view also so that we can show the option addition available for polls that allow custom
-   /* self.allowCustom = function() {
-        if(self.poll.allowCustom) {
-            return true; 
-        } else {
-            return false; 
-        }
-    } */
+    self.optionsWithAddedOption; 
     
     self.showCustomOptionAvailable = function() {
-        if (AuthService.isLoggedIn()  /*&& self.allowCustom() */) {
+        if (AuthService.isLoggedIn()  && self.allowCustom) {
             return true; 
         } else {
             return false; 
@@ -68,13 +63,16 @@ pollApp.controller('VoteCtrl', ['$routeParams', 'PollFactory', 'AuthService',  f
     
     self.addCustomOption = function() {
         if (self.newCustomOption.length > 0) {
-            self.poll.options.push(self.newCustomOption); 
+            self.options.push(self.newCustomOption); 
         }
     }; 
     
     self.getPollSuccess = function(response) { 
         console.log(response.data); 
         self.poll = response.data; 
+        self.options = response.data.options; 
+        self.originalOptions = response.data.options; 
+        self.allowCustom = response.data.allowCustom; 
     };
     
     self.getPollFailure = function() {
@@ -102,6 +100,15 @@ pollApp.controller('VoteCtrl', ['$routeParams', 'PollFactory', 'AuthService',  f
             self.saveSuccess, 
             self.saveFailure
         ); 
+        
+       if (self.options.length > self.originalOptions.length) {
+            PollFactory.updatePollById({
+                id: self.poll._id, 
+                allowCustom: self.poll.allowCustom,
+                question: self.poll.question,
+                options: self.poll.options
+            }, self.saveSuccess, self.saveFailure); 
+       }
     };
     
     PollFactory.getPollById(
@@ -143,6 +150,10 @@ pollApp.controller('ManageCtrl', ['AuthService', 'PollFactory',  function(AuthSe
 
 pollApp.controller('CreatePollCtrl', ['AuthService', 'PollFactory', '$location', function(AuthService, PollFactory, $location) {
     
+    var self = this; 
+    
+    self.allowCustom = false; 
+    
     this.proposedQuestion = ""; 
     this.proposedOption = ""; 
     this.options = []; 
@@ -179,7 +190,7 @@ pollApp.controller('CreatePollCtrl', ['AuthService', 'PollFactory', '$location',
             (
                 {   
                     userName: userName, 
-                    allowCustom: false, 
+                    allowCustom: self.allowCustom, 
                     question: this.proposedQuestion, 
                     options: this.options, 
                     authorId: userId,
@@ -264,9 +275,6 @@ pollApp.controller('UserCtrl', ['$http', 'AuthService', '$location', function($h
     }
 
     
-    this.logout = function() {
-        AuthService.logout(self.success, self.failure); 
-    }
     
 }]); 
 
@@ -311,7 +319,7 @@ pollApp.controller('EditPollCtrl', ['PollFactory', '$routeParams', '$location', 
         self.poll = res.data; 
         self.question = res.data.question;
         self.options = res.data.options; 
-        self.allowcustom = res.data.allowCustom; 
+        self.allowCustom = res.data.allowCustom; 
     }
     
     self.failure = function(res) {
