@@ -106,7 +106,7 @@ pollApp.controller('VoteCtrl', ['$routeParams', 'PollFactory', 'AuthService',  f
                 id: self.poll._id, 
                 allowCustom: self.poll.allowCustom,
                 question: self.poll.question,
-                options: self.poll.options
+                options: self.options
             }, self.saveSuccess, self.saveFailure); 
        }
     };
