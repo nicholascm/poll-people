@@ -14,7 +14,10 @@ require('./config/passport.js')(passport); // pass passport for configuration
 
 var app = express();
 
-mongoose.connect('mongodb://localhost:27017/polls', function (err, db) {
+var sandboxData = process.env.MONGODB_URI; 
+var localData = 'mongodb://localhost:27017/polls'; 
+
+mongoose.connect(sandboxData, function (err, db) {
 
    if (err) {
       throw new Error('Database failed to connect!');

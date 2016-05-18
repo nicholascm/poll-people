@@ -4,7 +4,7 @@
   "description": "A little polling app.",
   "main": "server.js",
   "scripts": {
-    "start": "gulp"
+    "start": "node server"
   },
   "repository": {
     "type": "git",
