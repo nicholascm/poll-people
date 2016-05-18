@@ -37,8 +37,8 @@ mongoose.connect(sandboxData, function (err, db) {
    
    routes(app, passport);
 
-   app.listen(8080, function () {
-      console.log('Node.js listening on port 8080...');
+   app.listen(app.get('port'), function () {
+      console.log('Node.js listening on port ...', app.get('port'));
    });
 
 });
