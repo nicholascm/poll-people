@@ -88,31 +88,33 @@ pollApp.controller('VoteCtrl', ['$routeParams', 'PollFactory', 'AuthService',  f
     };
     
     self.save = function() {
-        PollFactory.saveVote(
-        {   
-            pollId: self.poll._id, //pollId will not be saved for the vote, but is used to find the correct poll to update
-            username: "",
-            choice: self.choice
-        }, 
-            self.saveSuccess, 
-            self.saveFailure
-        ); 
-
-       if (self.customAdded) {
-            PollFactory.updatePollById({
-                id: self.poll._id, 
-                allowCustom: self.poll.allowCustom,
-                question: self.poll.question,
-                options: self.options
-            }, self.saveSuccess, self.saveFailure); 
-       }
+       if (self.choice != null) {
+            PollFactory.saveVote(
+            {   
+                pollId: self.poll._id, //pollId will not be saved for the vote, but is used to find the correct poll to update
+                username: "",
+                choice: self.choice
+            }, 
+                self.saveSuccess, 
+                self.saveFailure
+            ); 
+    
+           if (self.customAdded) {
+                PollFactory.updatePollById({
+                    id: self.poll._id, 
+                    allowCustom: self.poll.allowCustom,
+                    question: self.poll.question,
+                    options: self.options
+                }, self.saveSuccess, self.saveFailure); 
+           }
+        }
     };
-    
-    PollFactory.getPollById(
-    {
-        id: $routeParams.pollId
-    }, self.getPollSuccess, self.getPollFailure); 
-    
+         //load the original data
+        PollFactory.getPollById(
+        {
+            id: $routeParams.pollId
+        }, self.getPollSuccess, self.getPollFailure); 
+   
 }]);
 
 
