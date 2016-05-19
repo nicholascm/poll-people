@@ -79,6 +79,7 @@ var pollApp = angular.module('pollApp', ['ngRoute']);
     pollApp.run(function ($rootScope, $location, $route, AuthService) {
          $rootScope.$on('$routeChangeStart',
             function (event, next, current) {
+          
             if (!AuthService.isLoggedIn() && next.access.restricted) {
             AuthService.getUserStatusFromServer(function() {
                 if (next.access.restricted && AuthService.isLoggedIn() === false) {

@@ -43,18 +43,16 @@ pollApp.controller('VoteCtrl', ['$routeParams', 'PollFactory', 'AuthService',  f
     
     self.poll; 
     
-    //self.options = self.poll.options; 
-    
     self.newCustomOption; //used to hold the new custom option if one is allowed
     
     self.allowCustom; 
     
-    self.originalOptions; 
+    self.options; 
     
-    self.optionsWithAddedOption; 
+    self.customAdded = false; 
     
     self.showCustomOptionAvailable = function() {
-        if (AuthService.isLoggedIn()  && self.allowCustom) {
+        if (AuthService.isLoggedIn()  && self.allowCustom && !self.customAdded) {
             return true; 
         } else {
             return false; 
@@ -63,6 +61,7 @@ pollApp.controller('VoteCtrl', ['$routeParams', 'PollFactory', 'AuthService',  f
     
     self.addCustomOption = function() {
         if (self.newCustomOption.length > 0) {
+            self.customAdded = true; 
             self.options.push(self.newCustomOption); 
         }
     }; 
@@ -71,7 +70,6 @@ pollApp.controller('VoteCtrl', ['$routeParams', 'PollFactory', 'AuthService',  f
         console.log(response.data); 
         self.poll = response.data; 
         self.options = response.data.options; 
-        self.originalOptions = response.data.options; 
         self.allowCustom = response.data.allowCustom; 
     };
     
@@ -92,16 +90,15 @@ pollApp.controller('VoteCtrl', ['$routeParams', 'PollFactory', 'AuthService',  f
     self.save = function() {
         PollFactory.saveVote(
         {   
-            pollId: self.poll._id,
-            userId: 1,
-            name: "nicholascm90", 
-            choice: this.choice
+            pollId: self.poll._id, //pollId will not be saved for the vote, but is used to find the correct poll to update
+            username: "",
+            choice: self.choice
         }, 
             self.saveSuccess, 
             self.saveFailure
         ); 
-        
-       if (self.options.length > self.originalOptions.length) {
+
+       if (self.customAdded) {
             PollFactory.updatePollById({
                 id: self.poll._id, 
                 allowCustom: self.poll.allowCustom,

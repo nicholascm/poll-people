@@ -57,13 +57,13 @@ pollApp.factory('AuthService', ['$http', function($http) {
         }).then(function(data) {
             if (data.status) {
                 user = data.user; 
-                success(); 
+                success(data); 
             } else {
                 user = false; 
             }
         }, function() {
             failure(); 
-            console.log('failure')
+            console.log('failure to get user')
         }); 
     }; 
 
