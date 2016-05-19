@@ -18,7 +18,7 @@ var sandboxData = process.env.MONGODB_URI;
 var localData = 'mongodb://localhost:27017/polls'; 
 var port = process.env.PORT || 8080; 
 
-mongoose.connect(sandboxData, function (err, db) {
+mongoose.connect(localData, function (err, db) {
 
    if (err) {
       throw new Error('Database failed to connect!');
@@ -39,7 +39,7 @@ mongoose.connect(sandboxData, function (err, db) {
    routes(app, passport);
 
    app.listen(port, function () {
-      console.log('Node.js listening on port ...', app.get('port'));
+      console.log('Node.js listening on port ...', port);
    });
 
 });
