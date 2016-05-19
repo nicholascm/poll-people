@@ -12,7 +12,7 @@ pollApp.directive('twitterShare', function() {
                 
                 if (question) {
                    twttr.widgets.createShareButton(
-                    'https://poll-app-nicholascm90.c9users.io/#/results/'+scope.result.id, element[0],
+                    'https://upollster.herokuapp.com/#/results/'+scope.result.id, element[0],
                     {
                         text: "Check out my poll results for "+"'"+scope.result.question+"'"
     
