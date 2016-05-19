@@ -80,14 +80,12 @@ var pollApp = angular.module('pollApp', ['ngRoute']);
          $rootScope.$on('$routeChangeStart',
             function (event, next, current) {
           
-            if (!AuthService.isLoggedIn() && next.access.restricted) {
-            AuthService.getUserStatusFromServer(function() {
-                if (next.access.restricted && AuthService.isLoggedIn() === false) {
+            AuthService.getUserStatusFromServer(function() { //checking the status of the user on each page change
+                if (next.access.restricted && !AuthService.isLoggedIn()) {
                     $location.path('/login');
-                }
+                } 
             }, function() { console.log("unable to complete auth request.")}); 
         
-            }            
         });
     
     }); 

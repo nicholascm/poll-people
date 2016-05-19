@@ -24,6 +24,7 @@ pollApp.factory('AuthService', ['$http', function($http) {
             data: data
         }).then(function(res) {
             user = res.data.user; 
+            console.log("user", user); 
             console.log(res.data.user); 
             success(res);
         }, function(res) {
@@ -54,10 +55,11 @@ pollApp.factory('AuthService', ['$http', function($http) {
         $http({
             method: "GET", 
             url: '/user/status', 
-        }).then(function(data) {
-            if (data.status) {
-                user = data.user; 
-                success(data); 
+        }).then(function(res) {
+            if (res.status) {
+                user = res.data.user; 
+                console.log('getuser', user); 
+                success(res); 
             } else {
                 user = false; 
             }
