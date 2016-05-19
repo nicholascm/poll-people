@@ -48,6 +48,11 @@ body {
 .navbar-default .navbar-text {
 	color: #fff;
 }
+
+nav .dropdown {
+	color: #fff;
+}
+
 p {
 	margin: 8px 0 0 0;
 }
