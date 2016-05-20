@@ -13,9 +13,9 @@
         <li ng-repeat = "poll in mng.polls" class = "list-group-item"> 
             <div class = "container">
                 <div class = "row">
-                 <a class = "col-xs-3 btn btn-default" href = "/#/edit/{{poll._id}}">Edit</a>
-                 <p class = "col-xs-6"><strong>{{poll.question}} </strong>[ {{poll.votes.length}} Votes ]</p>
-                <a class = "col-xs-6  btn btn-default" href = "/#/results/{{poll._id}}">Results</a>                               
+                 <a class = "col-xs-6 col-md-3 btn btn-default" href = "/#/edit/{{poll._id}}">Edit</a>
+                 <p class = "col-xs-12 col-md-6"><strong>{{poll.question}} </strong>[ {{poll.votes.length}} Votes ]</p>
+                <a class = "col-xs-6 col-md-3 btn btn-default" href = "/#/results/{{poll._id}}">Results</a>                               
                     
                     
                 </div>
