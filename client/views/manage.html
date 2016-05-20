@@ -5,13 +5,24 @@
     <a class = "btn btn-default" href = "/#/create">New Poll</a>
     <h3 class = "title-text">My Profile</h3>
     <p class = "title-text">Email: {{mng.user.local.email}}</p>
+    <p class = "title-text">Number of Polls: {{mng.polls.length}}</p>
 </div>
 <div class = "col-md-9"> 
     <h3 class = "title-text">My Polls</h3>
     <ul class = "list-group">
         <li ng-repeat = "poll in mng.polls" class = "list-group-item"> 
-            {{poll.question}}
-            <a class = "btn btn-default" href = "/#/edit/{{poll._id}}">Edit</a>
+            <div class = "container">
+                <div class = "row">
+                 <a class = "col-xs-3 btn btn-default" href = "/#/edit/{{poll._id}}">Edit</a>
+                 <p class = "col-xs-6"><strong>{{poll.question}} </strong>[ {{poll.votes.length}} Votes ]</p>
+                <a class = "col-xs-6  btn btn-default" href = "/#/results/{{poll._id}}">Results</a>                               
+                    
+                    
+                </div>
+                
+            </div>
+
+
         </li>
 
     </ul>

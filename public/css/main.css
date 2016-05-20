@@ -41,7 +41,6 @@ body {
 	color: white;
 }
 
-
 .navbar-default .navbar-brand {
 	color: #fff;
 }
@@ -88,7 +87,7 @@ p {
 	border: 0;
 	font-size: 14px;
 	border-radius: 3px;
-	padding: 10px 5px;
+	padding: 10px 5px 10px;
 	width: 100px;
 	font-weight: 500;
 }
