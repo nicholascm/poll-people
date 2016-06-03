@@ -9,6 +9,7 @@ var cookieParser = require('cookie-parser');
 var passport = require('passport'); 
 var session = require('express-session'); 
 
+
 require('./config/passport.js')(passport); // pass passport for configuration
 
 
